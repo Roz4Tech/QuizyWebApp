@@ -1,4 +1,4 @@
-# Quiz Application
+# Quizy Quiz Application
 
 A modern, responsive web-based quiz application built with Python and Flask. Test your knowledge across various topics including general knowledge, sports, history, geography, and programming with an intuitive interface and comprehensive feedback system.
 
@@ -34,7 +34,130 @@ A modern, responsive web-based quiz application built with Python and Flask. Tes
 - **Input Validation & Sanitization**: Protection against malicious input and XSS attacks
 - **Error Handling**: Graceful error handling with user-friendly messages
 
-## 🛠️ Installation & Setup
+## � Application Flow
+
+### User Journey Flowchart
+
+```mermaid
+flowchart TD
+    A[🏠 User visits Homepage] --> B[🎯 Start Quiz]
+    B --> C[📝 Quiz Interface Loads]
+    C --> D[❓ Display Question 1/20]
+    D --> E[👤 User selects answer]
+    E --> F[📤 Submit answer]
+    F --> G{📊 Question < 20?}
+    G -->|Yes| H[➡️ Next Question]
+    H --> D
+    G -->|No| I[🏁 Quiz Complete]
+    I --> J[📈 Calculate Score]
+    J --> K[🎉 Results Page]
+    K --> L{🤔 User Choice}
+    L -->|📋 View Solutions| M[📝 Solutions Page]
+    L -->|🔄 Retake Quiz| N[🆕 New Quiz Session]
+    L -->|🏠 Home| O[🏠 Return to Homepage]
+    M --> P{📱 User Action}
+    P -->|🔄 Retake Quiz| N
+    P -->|🏠 Home| O
+    N --> C
+    O --> B
+    
+    style A fill:#667eea,stroke:#764ba2,stroke-width:2px,color:#fff
+    style K fill:#4CAF50,stroke:#45a049,stroke-width:2px,color:#fff
+    style M fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style I fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
+```
+
+### System Architecture
+
+```mermaid
+graph TB
+    subgraph "🌐 Frontend Layer"
+        A[📱 HTML Templates]
+        B[🎨 CSS Styling]
+        C[⚡ JavaScript Interactions]
+    end
+    
+    subgraph "🔧 Flask Application"
+        D[🚀 quizapp.py - Main App]
+        E[❓ quiz.py - Quiz Logic]
+        F[🛡️ CSRF Protection]
+        G[⏱️ Rate Limiting]
+        H[🔐 Session Management]
+    end
+    
+    subgraph "📊 Data Layer"
+        I[📝 Question Pool - 32+ Questions]
+        J[👤 User Sessions]
+        K[📈 Score Tracking]
+    end
+    
+    subgraph "🔒 Security Features"
+        L[🛡️ CSRF Tokens]
+        M[🚦 Rate Limits]
+        N[🔐 Secure Sessions]
+        O[✅ Input Validation]
+    end
+    
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    D --> F
+    D --> G
+    D --> H
+    E --> I
+    H --> J
+    E --> K
+    F --> L
+    G --> M
+    H --> N
+    D --> O
+    
+    style D fill:#667eea,stroke:#764ba2,stroke-width:3px,color:#fff
+    style E fill:#4CAF50,stroke:#45a049,stroke-width:2px,color:#fff
+    style I fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+```
+
+### Deployment Architecture
+
+```mermaid
+graph LR
+    subgraph "🔄 Development"
+        A[💻 Local Development]
+        B[🔧 Flask Dev Server]
+        C[🐍 Python 3.8+]
+    end
+    
+    subgraph "📦 Version Control"
+        D[📂 GitHub Repository]
+        E[🔄 Git Workflow]
+    end
+    
+    subgraph "🚀 Future Deployment Options"
+        F[☁️ Heroku]
+        G[🌊 DigitalOcean]
+        H[🐙 PythonAnywhere]
+        I[🏢 Self-hosted]
+    end
+    
+    A --> B
+    B --> C
+    A --> E
+    E --> D
+    D --> F
+    D --> G
+    D --> H
+    D --> I
+    
+    style A fill:#667eea,stroke:#764ba2,stroke-width:2px,color:#fff
+    style D fill:#4CAF50,stroke:#45a049,stroke-width:2px,color:#fff
+    style F fill:#FF5722,stroke:#D84315,stroke-width:2px,color:#fff
+    style G fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style H fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
+    style I fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+```
+
+## �🛠️ Installation & Setup
 
 ### Prerequisites
 
@@ -486,6 +609,20 @@ We welcome contributions! Here's how you can help improve the quiz application:
 - 📊 **Analytics**: Detailed performance statistics
 - 🔊 **Accessibility**: Screen reader support and keyboard navigation
 - 🌐 **Internationalization**: Multi-language support
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### License Summary
+- ✅ **Commercial Use**: You can use this software commercially
+- ✅ **Modification**: You can modify the source code
+- ✅ **Distribution**: You can distribute copies of the software
+- ✅ **Private Use**: You can use the software privately
+- ❗ **Liability**: The software comes without warranty
+- ❗ **License Notice**: Must include copyright and license notice
 
 ## 🙏 Acknowledgments
 
