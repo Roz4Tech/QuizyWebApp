@@ -49,12 +49,12 @@ A modern, responsive web-based quiz application built with Python and Flask. Tes
 1. **Clone the repository**:
    ```bash
    # Windows (Command Prompt/PowerShell)
-   git clone <repository-url>
-   cd Quiz
+   git clone https://github.com/Roz4Tech/QuizyWebApp.git
+   cd QuizyWebApp
    
    # Linux/macOS (Terminal)
-   git clone <repository-url>
-   cd Quiz
+   git clone https://github.com/Roz4Tech/QuizyWebApp.git
+   cd QuizyWebApp
    ```
 
 2. **Set up a virtual environment** (recommended):
@@ -312,7 +312,7 @@ If you haven't pushed to GitHub yet, follow these steps:
 3. **Connect and Push**:
    ```bash
    # All platforms (replace 'yourusername' with your GitHub username)
-   git remote add origin https://github.com/yourusername/Quiz-Application.git
+   git remote add origin https://github.com/Roz4Tech/QuizyWebApp.git
    git branch -M main
    git push -u origin main
    ```
@@ -446,8 +446,8 @@ We welcome contributions! Here's how you can help improve the quiz application:
 1. **Fork the Repository**:
    ```bash
    # Fork on GitHub, then clone your fork
-   git clone https://github.com/yourusername/Quiz-Application.git
-   cd Quiz-Application
+   git clone https://github.com/Roz4Tech/QuizyWebApp.git
+   cd QuizyWebApp
    ```
 
 2. **Create a Feature Branch**:
@@ -498,10 +498,10 @@ We welcome contributions! Here's how you can help improve the quiz application:
 
 ## � Support & Contact
 
-- **Issues**: Report bugs on [GitHub Issues](https://github.com/yourusername/Quiz-Application/issues)
-- **Discussions**: Join conversations in [GitHub Discussions](https://github.com/yourusername/Quiz-Application/discussions)
+- **Issues**: Report bugs on [GitHub Issues](https://github.com/Roz4Tech/QuizyWebApp/issues)
+- **Discussions**: Join conversations in [GitHub Discussions](https://github.com/Roz4Tech/QuizyWebApp/discussions)
 - **Email**: Contact for major issues or suggestions
 
 ---
 
-**Made with ❤️ using Python & Flask | © 2025 Quiz Application**
+**Made with ❤️ using Python & Flask | © 2025 Quizy Web Application**
