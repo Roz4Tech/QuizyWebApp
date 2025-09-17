@@ -1,37 +1,6 @@
 # Quizy Quiz Application
 
-A moder- **Input Validation & Sanitization**: Protection against malicious input and XSS attacks
-- **Error Handling**: Graceful error handling with user-friendly messages
-
-## 📸 Screenshots
-
-Experience the modern, responsive design of Quizy Quiz Application through these screenshots:
-
-### 🎯 Quiz Interface
-![Quiz Questions Page](Quizy%20Questions%20Page.png)
-*Interactive quiz interface with modern gradient design, question counter, and intuitive answer selection*
-
-### 📊 Results Page  
-![Quiz Results Page](Quizy%20Results%20Page.png)
-*Comprehensive results display with score percentage, performance feedback, and navigation options*
-
-### 📝 Solutions Overview
-![Quiz Solutions Page](Quizy%20Solutions%20Page.png)
-*Detailed solutions page showing correct answers, user responses, and comprehensive feedback*
-
-### 🏁 Complete Solutions View
-![End of Solutions Page](Quizy%20end%20of%20Solutions%20page.png)
-*Final solutions page with complete question review and restart options*
-
-### ✨ Key Visual Features Showcased:
-- 🎨 **Modern Gradient Design**: Beautiful purple-blue gradients throughout
-- 📱 **Responsive Layout**: Clean, card-based design that works on all devices
-- ✅ **Visual Feedback**: Color-coded answers (green for correct, red for incorrect)
-- 🎯 **Progress Indicators**: Clear question numbering and navigation
-- 🏆 **Performance Analytics**: Detailed scoring and percentage breakdown
-- 🔄 **Intuitive Navigation**: Easy-to-use buttons and clear call-to-actions
-
-## � Application Flowesponsive web-based quiz application built with Python and Flask. Test your knowledge across various topics including general knowledge, sports, history, geography, and programming with an intuitive interface and comprehensive feedback system.
+A modern, responsive web-based quiz application built with Python and Flask. Test your knowledge across various topics including general knowledge, sports, history, geography, and programming with an intuitive interface and comprehensive feedback system.
 
 ## 🚀 Features
 
