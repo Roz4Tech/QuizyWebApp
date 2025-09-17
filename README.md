@@ -1,9 +1,5 @@
-# Quizy Quiz Application
-# Collaborators:
-  Tetteh Wayo Willhermina
-  Sallah Prince Selasi
-  Agbenyegah Gabriel
-  Agbaglo Romeo
+# Quizy Pop Quiz Application
+# Collaborators:Tetteh Wayo Willhermina, Sallah Prince Selasi, Agbenyegah Gabriel, Agbaglo Romeo
 
 A modern, responsive web-based quiz application built with Python and Flask. Test your knowledge across various topics including general knowledge, sports, history, geography, and programming with an intuitive interface and comprehensive feedback system.
 **Input Validation & Sanitization**: Protection against malicious input and XSS attacks
