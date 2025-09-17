@@ -165,10 +165,10 @@ graph LR
         E[🔄 Git Workflow]
     end
     
-    subgraph "🚀 Future Deployment Options"
+    subgraph "🚀 Deployment Options"
         F[☁️ Heroku]
-        G[🌊 DigitalOcean]
-        H[🐙 PythonAnywhere]
+        G[🌊 DigitalOcean] 
+        H[🐙 PythonAnywhere - ACTIVE]
         I[🏢 Self-hosted]
     end
     
@@ -511,6 +511,180 @@ docker run -p 5000:5000 quiz-app
 - **AWS EC2**: Full control with any OS
 - **Google Cloud**: App Engine or Compute Engine
 - **Azure**: App Service or Virtual Machines
+
+## 🐙 PythonAnywhere Deployment Guide
+
+PythonAnywhere is an excellent platform for hosting Python web applications with built-in support for Flask. Here's a complete step-by-step guide to deploy your Quizy Quiz Application:
+
+### Prerequisites
+
+1. **PythonAnywhere Account**:
+   - Sign up at [pythonanywhere.com](https://www.pythonanywhere.com)
+   - Free accounts include 1 web app and 512MB storage
+   - Paid accounts offer more resources and custom domains
+
+### Step 1: Upload Your Code
+
+**Option A: Git Clone (Recommended)**
+```bash
+# In PythonAnywhere Bash console
+cd ~
+git clone https://github.com/Roz4Tech/QuizyWebApp.git
+cd QuizyWebApp
+```
+
+**Option B: File Upload**
+- Use the PythonAnywhere file manager
+- Upload your project files to `/home/yourusername/QuizyWebApp/`
+
+### Step 2: Install Dependencies
+
+```bash
+# In PythonAnywhere Bash console
+cd ~/QuizyWebApp
+pip3.10 install --user flask flask-wtf
+# or if you have requirements.txt:
+pip3.10 install --user -r requirements.txt
+```
+
+### Step 3: Create WSGI Configuration
+
+Create `/var/www/yourusername_pythonanywhere_com_wsgi.py`:
+
+```python
+import sys
+import os
+
+# Add your project directory to Python path
+project_home = '/home/yourusername/QuizyWebApp'
+if project_home not in sys.path:
+    sys.path = [project_home] + sys.path
+
+# Set environment variables
+os.environ['FLASK_SECRET_KEY'] = 'your-secure-production-secret-key-here'
+
+# Import your Flask application
+from quizapp import app as application
+
+if __name__ == "__main__":
+    application.run()
+```
+
+### Step 4: Configure Web App
+
+1. **Go to Web Tab** in PythonAnywhere dashboard
+2. **Click "Add a new web app"**
+3. **Choose "Manual configuration"**
+4. **Select Python 3.10**
+5. **Set Source code**: `/home/yourusername/QuizyWebApp`
+6. **Set Working directory**: `/home/yourusername/QuizyWebApp`
+7. **WSGI configuration file**: Use the file created in Step 3
+
+### Step 5: Configure Static Files
+
+In the **Web** tab, add static file mappings:
+
+| URL | Directory |
+|-----|-----------|
+| `/static/` | `/home/yourusername/QuizyWebApp/static/` |
+
+### Step 6: Environment Variables
+
+In your WSGI file or PythonAnywhere environment, set:
+
+```python
+# Security settings for production
+os.environ['FLASK_ENV'] = 'production'
+os.environ['FLASK_SECRET_KEY'] = 'your-very-secure-secret-key'
+```
+
+### Step 7: Test Your Deployment
+
+1. **Reload your web app** in the Web tab
+2. **Visit your app**: `https://yourusername.pythonanywhere.com`
+3. **Test all features**:
+   - Quiz functionality
+   - Results page
+   - Solutions page
+   - Static file loading
+
+### Deployment Checklist
+
+- ✅ **Code uploaded** to PythonAnywhere
+- ✅ **Dependencies installed** (Flask, Flask-WTF)
+- ✅ **WSGI file configured** correctly
+- ✅ **Static files mapped** properly
+- ✅ **Environment variables** set for production
+- ✅ **Web app reloaded** and running
+- ✅ **All features tested** and working
+
+### Production Optimizations
+
+**Security Enhancements:**
+```python
+# In your WSGI file, add production settings
+import secrets
+os.environ['FLASK_SECRET_KEY'] = secrets.token_hex(32)  # Generate secure key
+os.environ['FLASK_ENV'] = 'production'
+```
+
+**Performance Settings:**
+- Enable **Force HTTPS** in Web tab
+- Set up **Error logging** in the Error log section
+- Configure **Access logging** for monitoring
+
+### Troubleshooting Common Issues
+
+**Import Errors:**
+```bash
+# Check Python path in WSGI file
+import sys
+print("Python path:", sys.path)
+```
+
+**Static Files Not Loading:**
+- Verify static file mappings in Web tab
+- Check file permissions: `chmod 644 static/*`
+
+**Application Not Starting:**
+- Check error logs in PythonAnywhere Web tab
+- Verify WSGI configuration
+- Test locally first: `python3 quizapp.py`
+
+**Database/Session Issues:**
+- Ensure proper file permissions for session storage
+- Consider using database for production instead of file-based sessions
+
+### Updating Your Deployment
+
+```bash
+# Update code from GitHub
+cd ~/QuizyWebApp
+git pull origin main
+
+# Install any new dependencies
+pip3.10 install --user -r requirements.txt
+
+# Reload web app (via Web tab or API)
+```
+
+### Custom Domain (Paid Plans)
+
+For paid accounts, you can use custom domains:
+1. **Add domain** in Web tab
+2. **Configure DNS** to point to PythonAnywhere
+3. **Enable HTTPS** for your custom domain
+
+### Monitoring and Maintenance
+
+- **Error Logs**: Check regularly in Web tab
+- **CPU Usage**: Monitor in Tasks tab
+- **Storage**: Keep under account limits
+- **Updates**: Keep dependencies updated
+
+Your Quizy Quiz Application is now live on PythonAnywhere! 🎉
+
+**Live URL**: `https://yourusername.pythonanywhere.com`
 
 # Using Docker
 docker build -t quiz-app .
