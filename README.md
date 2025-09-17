@@ -1,6 +1,7 @@
 # Quizy Quiz Application
 
-A moder- **Input Validation & Sanitization**: Protection against malicious input and XSS attacks
+A modern, responsive web-based quiz application built with Python and Flask. Test your knowledge across various topics including general knowledge, sports, history, geography, and programming with an intuitive interface and comprehensive feedback system.
+**Input Validation & Sanitization**: Protection against malicious input and XSS attacks
 - **Error Handling**: Graceful error handling with user-friendly messages
 
 ## 📸 Screenshots
