@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .score-container {
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 15px;
+            border: 2px solid #2196f3;
+        }
+        .score {
+            font-size: 3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        .score-text {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        .percentage {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #27ae60;
+            margin: 10px 0;
+        }
+        .btn-container {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="{{ url_for('static', filename='Quizy Logo.png') }}" alt="Quizy Logo">
+        </div>
+
+        <!-- Results -->
+        <h2>Quiz Completed!</h2>
+        
+        <div class="score-container">
+            <div class="score">{{ score }} / {{ total }}</div>
+            {% set percentage = (score / total * 100) | round(1) if total > 0 else 0 %}
+            <div class="percentage">{{ percentage }}%</div>
+            <div class="score-text">
+                {% if percentage >= 80 %}
+                    Excellent Work! 🎉
+                {% elif percentage >= 60 %}
+                    Good Job! 👍
+                {% elif percentage >= 40 %}
+                    Keep Practicing! 💪
+                {% else %}
+                    Don't Give Up! 📚
+                {% endif %}
+            </div>
+            
+            <div class="feedback {% if percentage >= 70 %}success{% elif percentage >= 40 %}warning{% else %}danger{% endif %}">
+                {% if percentage >= 90 %}
+                    Outstanding performance! You're a quiz master!
+                {% elif percentage >= 70 %}
+                    Great job! You have a good grasp of the material.
+                {% elif percentage >= 50 %}
+                    Not bad! With a bit more practice, you'll improve even more!
+                {% else %}
+                    Keep learning! Review the solutions and try again!
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="{{ url_for('solutions') }}" class="btn btn-primary">
+                View Solutions
+            </a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                Try Again
+            </a>
+        </div>
+    </div>
+</body>
+</html>
